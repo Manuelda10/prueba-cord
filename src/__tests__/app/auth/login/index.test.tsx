@@ -14,7 +14,7 @@ describe('Login component', () => {
         expect(passwordInput).toBeInTheDocument();
         expect(submitButton).toBeInTheDocument();
     });
-/*
+
     it('displays an error message when the form is submitted with invalid credentials', async () => {
         render(<Login />);
         const emailInput = screen.getByLabelText('Usuario:');
@@ -40,5 +40,5 @@ describe('Login component', () => {
         submitButton.click();
         //const dashboardPageTitleElement = await screen.findByText(dashboardPageTitle);
         //expect(dashboardPageTitleElement).toBeInTheDocument();
-    });*/
+    });
 });
