@@ -1,5 +1,6 @@
 import Image from "next/image"
 import Button from "@/components/button/button"
+import ButtonAuth from "@/components/button/ButtonAuth"
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       <div className="block w-100 justify-around sm:w-1/2 md:flex">
         <Button iconUrl="/assets/admin-user.svg" text="Administrador" />
         <Button iconUrl="/assets/user.svg" text="Propietarios" />
+        <ButtonAuth />
       </div>
     </main>
   )
