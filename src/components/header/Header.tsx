@@ -1,4 +1,6 @@
 import Image from "next/image"
+import ButtonAuth from "../button/ButtonAuth";
+import Link from "next/link";
 
 const Header = () => {
   return (
@@ -10,16 +12,16 @@ const Header = () => {
         </div>
       </div>
       <nav className="w-[50%] flex justify-center items-center">
-        <ul className="w-[100%] flex justify-around text-white font-medium">
-          <li><a href="#">Reportes</a></li>
-          <li><a href="#">Documentos</a></li>
-          <li><a href="#">Análisis de información</a></li>
-          <li><a href="#">Seguimiento de pagos</a></li>
+        <ul className="w-[100%] flex justify-around text-gray-100  font-medium">
+          <li className="hover:text-white hover:font-semibold"><Link href="/reports" replace>Reportes</Link></li>
+          <li className="hover:text-white hover:font-semibold"><Link href="/documents" replace>Documentos</Link></li>
+          <li className="hover:text-white hover:font-semibold"><Link href="/documents" replace>Análisis de información</Link></li>
+          <li className="hover:text-white hover:font-semibold"><Link href="/documents" replace>Seguimiento de pagos</Link></li>
         </ul>
       </nav>
       <div className="flex justify-end items-center w-[25%]">
         <button className="box-border bg-transparent border-solid border-2 border-white text-white rounded-md px-3 py-1 font-medium hover:bg-white hover:text-blue-500 ease-in duration-200 mx-2">Notificaciones</button>
-        <button className="box-border bg-white rounded-md px-3 py-1 border-solid border-2 border-white font-medium ease-in duration-200 text-blue-500 hover:text-white hover:bg-red-600 hover:border-red-600 mx-2">Salir</button>
+        <ButtonAuth/>
       </div>
     </header>
   );

@@ -13,8 +13,6 @@ export default function Home() {
         <h1 className="text-center font-medium py-12 text-white text-3xl lg:text-5xl">CENTRALIZA Y SIMPLIFICA LA ADMINISTRACIÓN DE TU CONDOMINIO</h1>
       </div>
       <div className="block w-100 justify-around sm:w-1/2 md:flex">
-        <Button iconUrl="/assets/admin-user.svg" text="Administrador" />
-        <Button iconUrl="/assets/user.svg" text="Propietarios" />
         <ButtonAuth />
       </div>
     </main>

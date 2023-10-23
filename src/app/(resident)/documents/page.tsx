@@ -64,7 +64,7 @@ const DocumentsPage = () => {
               <div className='w-[70%]'>
                 <input className="block w-full text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-non file:bg-blue-600 file:rounded-sm file:outline-none file:text-white file:border-0 file:px-4 file:py-1.5" onChange={(e) => setFile(e.target.files?.[0])} accept=".pdf" id="file_input" type="file" name="file"/>
               </div>
-              <input type='submit' value="Añadir" className='rounded-md px-4 py-1.5 bg-blue-600 text-white mx-2 hover:bg-blue-700 ease-in duration-200'/>
+              <input type='submit' value="Añadir" className='rounded-md px-4 py-1.5 bg-blue-600 text-white mx-2 hover:bg-blue-700 ease-in duration-200 hover:cursor-pointer'/>
             </form>
             
           </div>
