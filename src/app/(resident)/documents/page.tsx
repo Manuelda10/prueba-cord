@@ -1,33 +1,32 @@
 "use client";
 
 import { useSession } from 'next-auth/react';
-import {useState, useEffect} from 'react';
+import {useState, useEffect, useRef} from 'react';
 import Header from '@/components/header/Header';
+import { processPDF, getFormattedInfo } from '@/utils/utils';
+import {getDocuments, createDocument} from '@/server-actions/api';
 
 const DocumentsPage = () => {
   const {data: session, status} = useSession()
-  const [data, setData] = useState([])
-  const [file, setFile] = useState<File>()
+  const fileRef = useRef<HTMLInputElement>(null)
+  const [pdfInfo, setPDFInfo] = useState<any>({})
+  const [data, setData] = useState<any[]>([])
+
+  const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0]
+    if (!file) {
+      return;
+    }
+    const dataPDFText = await processPDF(file)
+    const dataPDF = getFormattedInfo(dataPDFText)
+    setPDFInfo(dataPDF)
+  }
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    if (!file) return
-
-    try {
-      const data = new FormData()
-      data.set('file', file)
-
-      const res = await fetch('/api/upload', {
-        method: 'POST',
-        body: data
-      })
-      // handle the error
-      console.log(res)
-      if (!res.ok) throw new Error(await res.text())
-    } catch (e: any) {
-      // Handle errors here
-      console.error(e)
-    }
+    console.log("DATA A ENVIAR: ", pdfInfo)
+    const createdDocument = await createDocument(pdfInfo)
+    setData([...data, createdDocument])
   }
 
   
@@ -41,10 +40,9 @@ const DocumentsPage = () => {
       return;
     }
 
-    fetch('https://undy6mcm8a.execute-api.us-east-1.amazonaws.com/Prod/document')
-      .then(response => response.json())
-      .then(data => setData(data))
-      .catch(err => console.log(err))
+    getDocuments().then((res) => {
+      setData(res)
+    })
   }, [status, session])
 
   return (
@@ -62,7 +60,7 @@ const DocumentsPage = () => {
             </button>
             <form onSubmit={handleSubmit} className='flex'>
               <div className='w-[70%]'>
-                <input className="block w-full text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-non file:bg-blue-600 file:rounded-sm file:outline-none file:text-white file:border-0 file:px-4 file:py-1.5" onChange={(e) => setFile(e.target.files?.[0])} accept=".pdf" id="file_input" type="file" name="file"/>
+                <input ref={fileRef} className="block w-full text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-non file:bg-blue-600 file:rounded-sm file:outline-none file:text-white file:border-0 file:px-4 file:py-1.5" onChange={handleFileChange} accept=".pdf" id="file_input" type="file" name="file"/>
               </div>
               <input type='submit' value="Añadir" className='rounded-md px-4 py-1.5 bg-blue-600 text-white mx-2 hover:bg-blue-700 ease-in duration-200 hover:cursor-pointer'/>
             </form>

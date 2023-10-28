@@ -7,8 +7,6 @@ import Loader from '../loader/Loader'
 export default function ButtonAuth() {
   const {data: session, status} = useSession()
 
-  console.log({session, status})
-
   const handleSignIn = async () => {
     await signIn('cognito', {callbackUrl: '/documents'})
   }
