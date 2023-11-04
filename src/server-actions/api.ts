@@ -29,9 +29,9 @@ async function login(username: string, password: string): Promise<LoginResponse>
 const getDocuments = async () => {
     const response = await fetch(`${API_URL}/document`, {
         method: 'GET',
-        /*headers: {
+        headers: {
         'Content-Type': 'application/json'
-        }*/
+        }
     });
     
     if (!response.ok) {
@@ -39,6 +39,7 @@ const getDocuments = async () => {
     }
 
     const data = await response.json();
+    console.log("DATA: ", data)
     data.forEach((document: any) => {
         document.fecha_de_pago = formatDate(document.fecha_de_pago, 2);
     })

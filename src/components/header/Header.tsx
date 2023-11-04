@@ -13,10 +13,10 @@ const Header = () => {
       </div>
       <nav className="w-[50%] flex justify-center items-center">
         <ul className="w-[100%] flex justify-around text-gray-100  font-medium">
-          <li className="hover:text-white hover:font-semibold"><Link href="/reports" replace>Reportes</Link></li>
-          <li className="hover:text-white hover:font-semibold"><Link href="/documents" replace>Documentos</Link></li>
-          <li className="hover:text-white hover:font-semibold"><Link href="/documents" replace>Análisis de información</Link></li>
-          <li className="hover:text-white hover:font-semibold"><Link href="/documents" replace>Seguimiento de pagos</Link></li>
+          <li className="hover:text-white"><Link href="/reports" replace>Reportes</Link></li>
+          <li className="hover:text-white"><Link href="/documents" replace>Documentos</Link></li>
+          <li className="hover:text-white"><Link href="/documents" replace>Análisis de información</Link></li>
+          <li className="hover:text-white"><Link href="/payment-track" replace>Seguimiento de pagos</Link></li>
         </ul>
       </nav>
       <div className="flex justify-end items-center w-[25%]">
