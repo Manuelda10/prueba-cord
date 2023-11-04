@@ -1,16 +1,22 @@
 "use client";
-import { useSession } from 'next-auth/react';
-import {useState, useEffect, useRef} from 'react';
+import {useState, useEffect} from 'react';
 import { getDocuments } from '@/app/api/services/api';
+import { ApolloProvider, useQuery, useMutation } from '@apollo/client';
+import apolloClient from '@/config/apollo-client';
+import { GET_ALL_ITEMS } from '@/app/api/services/queries';
 import Header from "@/components/header/Header"
 
 const PaymentTrack = () => {
-  const [data, setData] = useState<any[]>([])
-
+  const [data, setData] = useState([]);
+  /*const { loading, error, data } = useQuery(GET_ALL_ITEMS, {
+    variables: { limit: 10 },
+  });*/
+  
   useEffect(() => {
     getDocuments().then((res) => {
       setData(res)
     })
+    console.log(data)
   })
 
 
@@ -40,14 +46,14 @@ const PaymentTrack = () => {
               </tr>
             </thead>
             <tbody className='text-left'>
-              {data.map((row:any, index) => (
+              {data.map((row:any, index:any) => (
                 <tr key={index} className='border-b-2 border-gray-300'>
                   <td>{row.departamento}</td>
                   <td>{row.tipo_de_servicio}</td>
                   <td>{row.fecha_de_pago}</td>
                   <td className='flex' >
                     <span className='border rounded-md bg-green-50 text-green-600 font-medium p-1'>
-                      {row.residente}
+                      Aprobado
                     </span>
                   </td>
                   <td>$500</td>
