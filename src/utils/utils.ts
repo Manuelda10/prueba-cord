@@ -21,8 +21,8 @@ const processPDF = async (file: File) => {
 
 const getFormattedInfo = (text: string) => {
   const date:any = text.match(/(\d{2}\/\d{2}\/\d{4})/g);
-  const residente: string = text.split('Nombre: ')[1].split('Departamento')[0];
-  const departamento: string = text.split('Departamento: ')[1].split('Mail')[0];
+  const residente: string = text.split('Nombre: ')[1].split('Mail')[0];
+  const departamento: string = text.split('DEPARTAMENTO: ')[1];
   const servicio: string = text.split('TIPO: ')[1].split('DEPARTAMENTO')[0];
 
 
@@ -30,7 +30,7 @@ const getFormattedInfo = (text: string) => {
     residente: residente.trim().toUpperCase(),
     departamento: departamento.trim().toUpperCase(),
     tipo_de_servicio: servicio.trim().toUpperCase(),
-    fecha: formatDate(date[0], 1)
+    fecha_de_pago: formatDate(date[0], 1)
   }
 }
 

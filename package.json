@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev -p 3000",
+    "dev": "node server.js",
     "build": "next build",
     "start": "next start -p 3030",
     "lint": "next lint",
@@ -11,8 +11,11 @@
     "coverage": "jest --coverage"
   },
   "dependencies": {
+    "aws-amplify": "^5.3.11",
     "canvas": "^2.11.2",
+    "express": "^4.18.2",
     "formidable": "^3.5.1",
+    "http-proxy-middleware": "^2.0.6",
     "next": "13.5.4",
     "next-auth": "^4.24.3",
     "pdfjs-dist": "^3.11.174",
