@@ -12,7 +12,7 @@ app.prepare().then(() => {
 
   // Configurar el proxy
   server.use('/api/services', createProxyMiddleware({
-    target: 'https://klgd7u2z2d.execute-api.us-east-1.amazonaws.com/Prod/',
+    target: 'https://pzgmo74tz7.execute-api.us-east-1.amazonaws.com/Prod',
     pathRewrite: { '^/api/services': '' },
     changeOrigin: true
   }));

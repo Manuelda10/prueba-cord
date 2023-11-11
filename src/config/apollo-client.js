@@ -14,9 +14,9 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 });
 
 const httpLink = new HttpLink({
-  uri: 'https://2dc2gvyfojcp3kq2cpcqepwzc4.appsync-api.us-east-1.amazonaws.com/graphql',
+  uri: 'https://7yd2rdcfnnga5i2gqqjcok37ri.appsync-api.us-east-1.amazonaws.com/graphql',
   headers: {
-    'x-api-key': 'da2-y5l7k4mo2bfgjiqlw443diymce' // Usa la API key desde las variables de entorno
+    'x-api-key': 'da2-2ifx2u5qibdh7a6ohpei32wkvu' // Usa la API key desde las variables de entorno
   }
 });
 
