@@ -2,17 +2,14 @@ import { gql } from '@apollo/client';
 
 // Consulta para obtener todos los elementos
 const GET_ALL_ITEMS = gql`
-  query GetAllItems($limit: Int, $nextToken: String) {
-    all(limit: $limit, nextToken: $nextToken) {
-      items {
-        pagos_id
-        departamento
-        servicio
-        fecha_de_pago
-        estado
-        cantidad
-      }
-      nextToken
+  query MyQuery{
+    GetAll {
+      id_documento
+      departamento
+      residente
+      fecha_de_pago
+      tipo_de_servicio
+      url_pdf
     }
   }
 `;
